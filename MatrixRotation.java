@@ -3,14 +3,14 @@ import java.util.Random;
 public class MatrixRotation {
     public static void rotateMatrix(int[][] arr){
         int n = arr.length;
-	int last = n-1;
 	int levels = n/2;
         //loop for levels
 	for(int level = 0; level<levels; level++){
 	    //swap elements
 	    int first = level;
-	    int offset = n-1-level;
+	    int last  = n-1-level;
 	    for (int i = first; i< last; i++){
+		int offset = i - first;
 	        int temp = arr[first][i];
 		arr[first][i] = arr[last-offset][first];
 		
@@ -38,7 +38,7 @@ public class MatrixRotation {
     public static void main(String[] args){
 	Random rand = new Random();
         //define a matrix
-	int[][] mat = new int[3][3];
+	int[][] mat = new int[5][5];
 	for(int i = 0; i < mat.length; i++){
 	    for(int j = 0; j < mat.length; j++){
 	        mat[i][j] = rand.nextInt(50);
